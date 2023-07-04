@@ -1,0 +1,39 @@
+# ワークフロー名
+name: Regularly Note Post
+
+on:
+  schedule:
+    # 定期実行する時間
+    - cron: '0 * * * *'
+    - cron: '10 * * * *'
+    - cron: '20 * * * *'
+    - cron: '30 * * * *'
+    - cron: '40 * * * *'
+    - cron: '50 * * * *'
+
+jobs:
+  build:
+    # Ubuntuの最新版環境内で処理を実行することを指定
+    runs-on: ubuntu-latest
+
+    # 実行する処理＆コマンド指定
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run: |
+          # pip更新
+          python -m pip install --upgrade pip
+          # 必要なパッケージインストール
+          pip install Misskey.py
+
+      - name: Run script
+        env:
+          MISSKEY_SERVER_ADDRESS: ${{ secrets.MISSKEY_SERVER_ADDRESS }}
+          MISSKEY_TOKEN: ${{ secrets.MISSKEY_TOKEN }}
+        run: |
+          # 定期実行するファイルを指定。
+          python 3moji.py
