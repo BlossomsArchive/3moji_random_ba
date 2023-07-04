@@ -19,3 +19,4 @@ b3= random.choice(hiragana)
 c3= random.choice(hiragana)
 
 moji3.notes_create(text=a3+b3+c3)
+print(a3+b3+c3+'\n')
