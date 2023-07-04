@@ -30,7 +30,7 @@ jobs:
           # 必要なパッケージインストール
           pip install Misskey.py
 
-      - name: Run script
+      - name: Create Note
         env:
           MISSKEY_SERVER_ADDRESS: ${{ secrets.MISSKEY_SERVER_ADDRESS }}
           MISSKEY_TOKEN: ${{ secrets.MISSKEY_TOKEN }}
