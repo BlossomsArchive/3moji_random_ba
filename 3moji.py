@@ -22,6 +22,7 @@ try:
   moji3.notes_create(text=a3+b3+c3)
 except:
   time.sleep(30)
+  print('リトライ\n')
   a3= random.choice(hiragana)
   b3= random.choice(hiragana)
   c3= random.choice(hiragana)
