@@ -19,8 +19,12 @@ jobs:
           pip install Misskey.py
 
       - name: Create Note
+      - uses: corrupt952/actions-retry-command@v1.0.7
         env:
           MISSKEY_SERVER_ADDRESS: ${{ secrets.MISSKEY_SERVER_ADDRESS }}
           MISSKEY_TOKEN: ${{ secrets.MISSKEY_TOKEN }}
-        run: |
-          python 3moji.py
+        with:
+          run: |
+            python 3moji.py
+            max_attempts: 10
+            retry_interval: 10
