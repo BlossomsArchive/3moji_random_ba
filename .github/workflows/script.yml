@@ -1,7 +1,6 @@
 name: Regularly Note Post
 
 on:
-  workflow_dispatch:
   schedule:
     - cron: '*/10 * * * *'
 
