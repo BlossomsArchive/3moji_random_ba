@@ -18,6 +18,13 @@ hiragana = ['ぁ', 'あ', 'ぃ', 'い', 'ぅ', 'う', 'ぇ', 'え', 'ぉ', 'お'
 a3 = random.choice(hiragana)
 b3 = random.choice(hiragana)
 c3 = random.choice(hiragana)
-moji3.notes_create(text=a3 + b3 + c3)
 
+while True:
+    try:
+        moji3.notes_create(text=a3 + b3 + c3)
+    except:
+        time.sleep(300)
+    else:
+        break
+    
 print(a3+b3+c3+'\n')
