@@ -21,6 +21,7 @@ while True:
         moji3.token = misskey_token
         moji3.notes_create(text=a3 + b3 + c3)
     except:
+        print(Retry...)
         time.sleep(300)
     else:
         break
