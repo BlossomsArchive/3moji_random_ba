@@ -1,7 +1,7 @@
 # coding: utf-8
 
 from misskey import Misskey
-
+from atproto import Client, models
 import random
 import os
 import time
@@ -12,18 +12,28 @@ hiragana = ['ぁ', 'あ', 'ぃ', 'い', 'ぅ', 'う', 'ぇ', 'え', 'ぉ', 'お'
 a3 = random.choice(hiragana)
 b3 = random.choice(hiragana)
 c3 = random.choice(hiragana)
-
+post_text = a3 + b3 + c3
 while True:
     try:
         misskey_address = os.environ.get("MISSKEY_SERVER_ADDRESS")
         misskey_token = os.environ.get("MISSKEY_TOKEN")
         moji3 = Misskey(misskey_address)
         moji3.token = misskey_token
-        moji3.notes_create(text=a3 + b3 + c3)
+        moji3.notes_create(text=post_text)
     except:
         print('Retry...')
         time.sleep(300)
     else:
         break
-    
+
+while True:
+    try:
+        # Bluesky
+        bluesky = Client()
+        bluesky.login(str(os.environ.get("BLUESKY_MAIL_ADDRESS")),str(os.environ.get("BLUESKY_PASSWORD")))
+        bluesky.send_post(post_text)
+    except:
+        time.sleep(300)
+    else:
+        break
 print(a3+b3+c3+'\n')
