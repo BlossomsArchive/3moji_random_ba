@@ -17,8 +17,7 @@ while True:
     try:
         misskey_address = os.environ.get("MISSKEY_SERVER_ADDRESS")
         misskey_token = os.environ.get("MISSKEY_TOKEN")
-        moji3 = Misskey(misskey_address)
-        moji3.token = misskey_token
+        moji3 = Misskey(misskey_address,misskey_token)
         moji3.notes_create(text=post_text)
     except:
         print('Retry...')
