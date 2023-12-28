@@ -4,7 +4,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '*/10 * * * *'
-
+concurrency:
+  this_is_concurrency_workflow
+  
 jobs:
   Send_Note:
     runs-on: ubuntu-latest
