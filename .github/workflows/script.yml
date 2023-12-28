@@ -4,8 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '*/10 * * * *'
-concurrency:
-  this_is_concurrency_workflow
+concurrency: Regularly Note Post
   
 jobs:
   Send_Note:
